@@ -1,0 +1,232 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20200703132816
+Username: DESKTOP-N99ELP6\Arian
+RunAs User: DESKTOP-N99ELP6\Arian
+Configuration Name: 
+Machine: DESKTOP-N99ELP6 (Microsoft Windows NT 10.0.18362.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 18504
+PSVersion: 5.1.18362.752
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.18362.752
+BuildVersion: 10.0.18362.752
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\Arian\Documents\Manipulating Objects.txt
+PS C:\WINDOWS\system32> Get-Help $_
+
+TOPIC
+    Windows PowerShell Help System
+
+SHORT DESCRIPTION
+    Displays help about Windows PowerShell cmdlets and concepts. 
+
+LONG DESCRIPTION
+    Windows PowerShell Help describes Windows PowerShell cmdlets,
+    functions, scripts, and modules, and explains concepts, including
+    the elements of the Windows PowerShell language.
+
+    Windows PowerShell does not include help files, but you can read the
+    help topics online, or use the Update-Help cmdlet to download help files
+    to your computer and then use the Get-Help cmdlet to display the help
+    topics at the command line.
+
+    You can also use the Update-Help cmdlet to download updated help files
+    as they are released so that your local help content is never obsolete. 
+
+    Without help files, Get-Help displays auto-generated help for cmdlets, 
+    functions, and scripts.
+
+
+  ONLINE HELP    
+    You can find help for Windows PowerShell online in the TechNet Library
+    beginning at http://go.microsoft.com/fwlink/?LinkID=108518. 
+
+    To open online help for any cmdlet or function, type:
+
+        Get-Help <cmdlet-name> -Online    
+
+  UPDATE-HELP
+    To download and install help files on your computer:
+
+       1. Start Windows PowerShell with the "Run as administrator" option.
+       2. Type:
+
+          Update-Help
+
+    After the help files are installed, you can use the Get-Help cmdlet to
+    display the help topics. You can also use the Update-Help cmdlet to
+    download updated help files so that your local help files are always
+    up-to-date.
+    
+    For more information about the Update-Help cmdlet, type:
+
+       Get-Help Update-Help -Online
+
+    or go to: http://go.microsoft.com/fwlink/?LinkID=210614
+
+
+  GET-HELP
+    The Get-Help cmdlet displays help at the command line from content in
+    help files on your computer. Without help files, Get-Help displays basic
+    help about cmdlets and functions. You can also use Get-Help to display
+    online help for cmdlets and functions.
+
+    To get help for a cmdlet, type:
+
+        Get-Help <cmdlet-name>
+    
+    To get online help, type:
+   
+        Get-Help <cmdlet-name> -Online    
+
+    The titles of conceptual topics begin with "About_".
+    To get help for a concept or language element, type:
+
+        Get-Help About_<topic-name>
+
+    To search for a word or phrase in all help files, type:
+
+        Get-Help <search-term>
+
+    For more information about the Get-Help cmdlet, type:
+
+        Get-Help Get-Help -Online
+
+    or go to: http://go.microsoft.com/fwlink/?LinkID=113316
+
+
+  EXAMPLES:
+      Save-Help              : Download help files from the Internet and saves
+                               them on a file share.
+      Update-Help            : Downloads and installs help files from the
+                               Internet or a file share.
+      Get-Help Get-Process   : Displays help about the Get-Process cmdlet.   
+      Get-Help Get-Process -Online
+                             : Opens online help for the Get-Process cmdlet.                            
+      Help Get-Process       : Displays help about Get-Process one page at a time.
+      Get-Process -?         : Displays help about the Get-Process cmdlet.      
+      Get-Help About_Modules : Displays help about Windows PowerShell modules.
+      Get-Help remoting      : Searches the help topics for the word "remoting."
+
+  SEE ALSO:
+      about_Updatable_Help
+      Get-Help
+      Save-Help
+      Update-Help
+PS C:\WINDOWS\system32> cls
+PS C:\WINDOWS\system32> Get-PSDrive
+
+Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
+----           ---------     --------- --------      ----                                                              ---------------
+Alias                                  Alias
+C                 248.01        216.79 FileSystem    C:\                                                              WINDOWS\system32
+Cert                                   Certificate   \
+D                                      FileSystem    D:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+
+PS C:\WINDOWS\system32> Get-Help ?
+
+Name                              Category  Module                    Synopsis
+----                              --------  ------                    --------
+%                                 Alias                               ForEach-Object
+?                                 Alias                               Where-Object
+h                                 Alias                               Get-History
+r                                 Alias                               Invoke-History
+
+
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object
+
+Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
+----           ---------     --------- --------      ----                                                              ---------------
+Alias                                  Alias
+C                 248.01        216.79 FileSystem    C:\                                                              WINDOWS\system32
+Cert                                   Certificate   \
+D                                      FileSystem    D:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1}
+
+Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
+----           ---------     --------- --------      ----                                                              ---------------
+C                 248.01        216.79 FileSystem    C:\                                                              WINDOWS\system32
+
+
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | Select-Object Root, Used, Free
+
+Root         Used         Free
+----         ----         ----
+C:\  266300444672 232778567680
+
+
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | Select-Object
+
+Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
+----           ---------     --------- --------      ----                                                              ---------------
+C                 248.01        216.79 FileSystem    C:\                                                              WINDOWS\system32
+
+
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | Select-Object *
+
+
+Used            : 266301091840
+Free            : 232777920512
+CurrentLocation : WINDOWS\system32
+Name            : C
+Provider        : Microsoft.PowerShell.Core\FileSystem
+Root            : C:\
+Description     :
+MaximumSize     :
+Credential      : System.Management.Automation.PSCredential
+DisplayRoot     :
+
+
+
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | ForEach-Object {"Arian"}
+Arian
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | ForEach-Object {Write-Host "Free Space for" $_.Root "is" $_.Free}
+Free Space for C:\ is 232777699328
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | ForEach-Object {Write-Host "Free Space for" $_.Root "is" $_.Free -ForegroundColor green}
+Free Space for C:\ is 232777539584
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | ForEach-Object {Write-Host "Free Space for" $_.Root "is" ($_.Free/1gb) -ForegroundColor green}
+Free Space for C:\ is 216.681663513184
+PS C:\WINDOWS\system32> "{0:N0}" -f 10000000000
+10,000,000,000
+PS C:\WINDOWS\system32> "{0:N2}" -f 10000000000
+10,000,000,000.00
+PS C:\WINDOWS\system32> "{0:C2}" -f 10000000000
+$10,000,000,000.00
+PS C:\WINDOWS\system32> "{0:P2}" -f 10000000000
+1,000,000,000,000.00%
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | ForEach-Object {Write-Host "Free Space for" $_.Root "is"("{0:N2}" -f ($_.Free/1gb)) -ForegroundColor green}
+Free Space for C:\ is 216.66
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object {$_.Free -gt 1} | ForEach-Object{$c= 0; Write-Host "This step only runs once"}{$c=$c+1; Write-Host "This step runs once for each obejct in the pipe" $c}{Write-Host "final value of c is" $c}
+This step only runs once
+This step runs once for each obejct in the pipe 1
+final value of c is 1
+PS C:\WINDOWS\system32> Get-PSDrive | ?{$_.Free -gt 1} | %{$Count = 0; Write-Host "";} { $_.Name + ": Used: " + "{0:N2}" -f ($_.Used/1gb) + " Free: " + "{0:N2}" -f ($_.free/1gb) + " Total: " + "{0:N2}" -f (($_.Used/1gb)+($_.Free/1gb)); $Count = $Count + $_.Free;}{Write-Host"";Write-Host "Total Free Space " ("{0:N2}" -f ($Count/1gb)) -backgroundcolor magenta}
+
+C: Used: 248.16 Free: 216.65 Total: 464.80
+
+Total Free Space  216.65
+PS C:\WINDOWS\system32> Get-PSDrive | Where-Object{$_.Free -gt 1} | ForEach-Object{$Count = 0; Write-Host "";} { $_.Name + ": Used: " + "{0:N2}" -f ($_.Used/1gb) + " Free: " + "{0:N2}" -f ($_.free/1gb) + " Total: " + "{0:N2}" -f (($_.Used/1gb)+($_.Free/1gb)); $Count = $Count + $_.Free;}{Write-Host"";Write-Host "Total Free Space " ("{0:N2}" -f ($Count/1gb)) -backgroundcolor magenta}
+
+C: Used: 248.16 Free: 216.65 Total: 464.80
+
+Total Free Space  216.65

@@ -1,0 +1,46 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20200704212030
+Username: DESKTOP-N99ELP6\Arian
+RunAs User: DESKTOP-N99ELP6\Arian
+Configuration Name: 
+Machine: DESKTOP-N99ELP6 (Microsoft Windows NT 10.0.18362.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 18344
+PSVersion: 5.1.18362.752
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.18362.752
+BuildVersion: 10.0.18362.752
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\Arian\Documents\PowerShell_transcript.DESKTOP-N99ELP6.8ajD+N7A.20200704212030.txt
+PS C:\Users\Arian\Desktop\Programming\PowerShell> Set-Location -Path C:\Users\Arian\Documents
+PS C:\Users\Arian\Documents> Import-Csv File.csv
+
+ObjectPropertyName ObjectPropertyColor ObjectPropertyNumber
+------------------ ------------------- --------------------
+Name0              Red                 100
+Name1              Yellow              1000
+Name2              Green               10000
+
+
+PS C:\Users\Arian\Documents> $OurObjectArray = Import-Csv File.csv
+PS C:\Users\Arian\Documents> $OurObjectArray.Count
+3
+PS C:\Users\Arian\Documents> $OurObjectArray[0].ObjectPropertyName
+Name0
+PS C:\Users\Arian\Documents> $OurObjectArray | ForEach-Object{Write-Host "The name of the object is:" $_.objectpropertyname -ForegroundColor $_.objectpropertycolor}
+The name of the object is: Name0
+The name of the object is: Name1
+The name of the object is: Name2
+PS C:\Users\Arian\Documents> $TotalOfNumberColumn = 0
+PS C:\Users\Arian\Documents> $OurObjectArray | ForEach-Object{Write-Host "The name of the object is:" $_.objectpropertyname -ForegroundColor $_.objectpropertycolor; $TotalOfNumberColumn += $_.objectpropertynumber}
+The name of the object is: Name0
+The name of the object is: Name1
+The name of the object is: Name2
+PS C:\Users\Arian\Documents> $TotalOfNumberColumn
+11100
+
